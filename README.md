@@ -1,6 +1,6 @@
 # VinceToken Solidity Smart Contract
 
-This Solidity program introduces the VinceToken contract, a versatile implementation of the ERC20 token standard on the Ethereum blockchain. Designed to facilitate token management and governance, VinceToken empowers users with functionalities for minting, burning, transfering tokens, and participating in governance through voting on proposals.
+This Solidity program introduces the VinceToken contract, a versatile implementation of the ERC20 token standard on the Ethereum blockchain. Designed to facilitate token management and governance, VinceToken empowers users with functionalities for minting, burning, transferring tokens, and participating in governance through voting on proposals.
 
 ## Description
 
