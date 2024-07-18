@@ -20,6 +20,11 @@ contract VinceToken is ERC20, Ownable {
         _burn(msg.sender, amount);
     }
 
+    function transfer(address recipient, uint256 amount) public override returns (bool) {
+        _transfer(_msgSender(), recipient, amount);
+        return true;
+    }
+
     function vote(bytes32 proposal) external {
         require(balanceOf(msg.sender) > 0, "Must have tokens to vote");
         votes[msg.sender] += balanceOf(msg.sender);
