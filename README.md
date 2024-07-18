@@ -1,12 +1,13 @@
 # VinceToken Solidity Smart Contract
 
-This Solidity program introduces the VinceToken contract, a versatile implementation of the ERC20 token standard on the Ethereum blockchain. Designed to facilitate token management and governance, VinceToken empowers users with functionalities for minting, burning, and participating in governance through voting on proposals.
+This Solidity program introduces the VinceToken contract, a versatile implementation of the ERC20 token standard on the Ethereum blockchain. Designed to facilitate token management and governance, VinceToken empowers users with functionalities for minting, burning, transfering tokens, and participating in governance through voting on proposals.
 
 ## Description
 
 The VinceToken contract defines a simple Vince token with the following features:
 - The contract owner can mint additional VINCE tokens to any address using the mint function.
 - Users can burn their tokens using the burn function.
+- Token holders can transfer tokens to other addresses using the transfer function.
 - Token holders can vote on proposals using the vote function, requiring them to hold tokens.
 - Only the contract owner can execute proposals (executeProposal) after verifying their validity.
 
@@ -50,6 +51,11 @@ contract VinceToken is ERC20, Ownable {
         _burn(msg.sender, amount);
     }
 
+    function transfer(address recipient, uint256 amount) public override returns (bool) {
+        _transfer(_msgSender(), recipient, amount);
+        return true;
+    }
+
     function vote(bytes32 proposal) external {
         require(balanceOf(msg.sender) > 0, "Must have tokens to vote");
         votes[msg.sender] += balanceOf(msg.sender);
@@ -71,9 +77,9 @@ contract VinceToken is ERC20, Ownable {
 4. **Interact with the contract:** Once deployed, interact with the contract by:
 - Mint: Mint new VINCE tokens.
 - Burn: Burn VINCE tokens.
+- Transfer: Transfer VINCE tokens to another
 - Vote: Vote on a proposal.
 - Execute Proposal: Execute a validated proposal.
-- Transfer: Transfer VINCE tokens to another address.
 - Transfer from: Transfer VINCE tokens from one address to another.
 - Approve: Approve spender to transfer VINCE tokens on your behalf.
 - Balance Of: Get the VINCE token balance of an address.
